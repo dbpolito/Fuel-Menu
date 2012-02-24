@@ -5,6 +5,9 @@
 			'Menu' => APPPATH.'classes/menu.php',
 		));
 
+#Routing
+The li of the link gets a active class when the link is equal to Uri::string() or when the link have 'part' => true it checks if the link match the beginning of the url (so the parent can get active too), as example below:
+
 #Example using Bootstrap
 	// Top Menu
 	$top_menu = array(
