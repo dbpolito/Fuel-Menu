@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Fuel-Menu by dbpolito</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/dbpolito/Fuel-Menu">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/dbpolito/Fuel-Menu/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/dbpolito/Fuel-Menu/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Fuel-Menu</h1>
+          <p>Lightweight class to create menu based on array</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/dbpolito">dbpolito</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>Instalation</h1>
+
+<pre><code>1. Copy the files to your fuel/app/ folder.
+2. Add the breadrumb to your autoloader on fuel/app/bootstrap.php
+    Autoloader::add_classes(array(
+        'Menu' =&gt; APPPATH.'classes/menu.php',
+    ));
+</code></pre>
+
+<h1>Routing</h1>
+
+<p>The li of the link gets a active class when the link is equal to Uri::string() or when the link have 'part' =&gt; true it checks if the link match the beginning of the url (so the parent can get active too), as example below:</p>
+
+<h1>Example using Bootstrap</h1>
+
+<pre><code>// Top Menu
+$top_menu = array(
+    'attr'  =&gt; array('class' =&gt; 'nav'),
+    'items' =&gt; array(
+        array(
+            'name' =&gt; 'Item 1 &lt;b class="caret"&gt;&lt;/b&gt;',
+            'link' =&gt; array(
+                'url'  =&gt; 'item1',
+                'attr' =&gt; array('class' =&gt; 'dropdown-toggle', 'data-toggle' =&gt; 'dropdown'),
+                'part' =&gt; true
+            ),
+            'attr' =&gt; array('class' =&gt; 'dropdown'),
+            'menu' =&gt; array(
+                'attr'  =&gt; array('class' =&gt; 'dropdown-menu'),
+                'items' =&gt; array(
+                    array(
+                        'name' =&gt; 'Sub Item 1',
+                        'link' =&gt; 'item1/sub1'
+                    ),
+                    array(
+                        'name' =&gt; 'Sub Item 2',
+                        'link' =&gt; 'item1/sub2'
+                    ),
+                ),
+            )
+        ),
+        array(
+            'name' =&gt; 'Item 2 &lt;b class="caret"&gt;&lt;/b&gt;',
+            'link' =&gt; array(
+                'url'  =&gt; 'item2',
+                'attr' =&gt; array('class' =&gt; 'dropdown-toggle', 'data-toggle' =&gt; 'dropdown'),
+                'part' =&gt; true
+            ),
+            'attr' =&gt; array('class' =&gt; 'dropdown'),
+            'menu' =&gt; array(
+                'attr'  =&gt; array('class' =&gt; 'dropdown-menu'),
+                'items' =&gt; array(
+                    array(
+                        'name' =&gt; 'Sub Item 1',
+                        'link' =&gt; 'item2/sub1'
+                    ),
+                    array(
+                        'name' =&gt; 'Sub Item 2',
+                        'link' =&gt; 'item2/sub2'
+                    ),
+                ),
+            )
+        ),
+    ),
+);
+
+Menu::forge('top_menu', $top_menu);
+</code></pre>
+
+<h1>View</h1>
+
+<pre><code>&lt;?php echo Menu::instance('top_menu')-&gt;get(); ?&gt;
+</code></pre>
+
+<p>Docs coming soon...</p>
+
+<p>Feel free to contribute sending issues and pull request! :D</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    
+  </body>
+</html>
