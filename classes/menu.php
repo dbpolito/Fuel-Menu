@@ -154,11 +154,11 @@ class Menu
 				{
 					if (is_array($item['link']))
 					{
-						$content = Html::anchor($link, $item['name'], $item['link']['attr']);
+						$content = \Html::anchor($link, $item['name'], $item['link']['attr']);
 					}
 					else
 					{
-						$content = Html::anchor($link, $item['name']);
+						$content = \Html::anchor($link, $item['name']);
 					}
 				}
 				else
