@@ -127,6 +127,11 @@ class Menu
 		{
 			foreach ($menu['items'] as $item)
 			{
+				if ( isset($item['perm']) and !Auth::check_access($item['perm']))
+				{
+					continue;
+				}
+
 				if ( ! isset($item['link']))
 				{
 					$item['link'] = '#';
@@ -150,7 +155,7 @@ class Menu
 					}
 				}
 
-				if (isset($item['name']) and $link != '#')
+				if (isset($item['name']) and !empty($item['name']))
 				{
 					if (is_array($item['link']))
 					{
