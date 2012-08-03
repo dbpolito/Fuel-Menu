@@ -129,7 +129,7 @@ class Menu
 			{
 				if ( isset($item['perm']))
 				{
-					if (is_string($item['perm']) and !Auth::check_access($item['perm']))
+					if (is_string($item['perm']) and !\Auth::check_access($item['perm']))
 					{
 						continue;
 					}
@@ -137,7 +137,7 @@ class Menu
 					{
 						$item['perm'] = \Arr::implode($item['menu']['items'], 'perm');
 
-						if ( ! Auth::check_access($item['perm']))
+						if ( ! \Auth::check_access($item['perm']))
 						{
 							continue;
 						}
