@@ -127,9 +127,21 @@ class Menu
 		{
 			foreach ($menu['items'] as $item)
 			{
-				if ( isset($item['perm']) and !Auth::check_access($item['perm']))
+				if ( isset($item['perm']))
 				{
-					continue;
+					if (is_string($item['perm']) and !Auth::check_access($item['perm']))
+					{
+						continue;
+					}
+					elseif ($item['perm'] === true and isset($item['menu']) and is_array($item['menu']))
+					{
+						$item['perm'] = \Arr::implode($item['menu']['items'], 'perm');
+
+						if ( ! Auth::check_access($item['perm']))
+						{
+							continue;
+						}
+					}
 				}
 
 				if ( ! isset($item['link']))
