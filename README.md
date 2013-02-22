@@ -1,14 +1,17 @@
-#Instalation
+## Instalation
+
 	1. Copy the files to your fuel/app/ folder.
 	2. Add the breadrumb to your autoloader on fuel/app/bootstrap.php
 		Autoloader::add_classes(array(
 			'Menu' => APPPATH.'classes/menu.php',
 		));
 
-#Routing
+## Routing
+
 The li of the link gets a active class when the link is equal to Uri::string() or when the link have 'part' => true it checks if the link match the beginning of the url (so the parent can get active too), as example below:
 
-#Example using Bootstrap
+## Example using Bootstrap
+
 	// Top Menu
 	$top_menu = array(
 		'attr'  => array('class' => 'nav'),
@@ -62,8 +65,15 @@ The li of the link gets a active class when the link is equal to Uri::string() o
 
 	Menu::forge('top_menu', $top_menu);
 
-#View
+## View
+
 	<?php echo Menu::instance('top_menu')->get(); ?>
+
+## License
+
+This is released under the MIT License.
+
+## Documentation
 
 Docs coming soon...
 
