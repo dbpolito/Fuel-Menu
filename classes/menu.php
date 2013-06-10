@@ -150,6 +150,10 @@ class Menu
 				}
 
 				$link = (is_array($item['link']) and isset($item['link']['url'])) ? $item['link']['url'] : $item['link'];
+				// It's route ?
+				$link = (is_array($link) and isset($link['name'])) ? \Router::get($link['name'], (isset($link['named_params'])) ? $link['named_params'] : array()) : $link;
+				$link = str_replace(\Uri::base(), '', $link);
+				
 				$part = (is_array($item['link']) and isset($item['link']['part'])) ? $item['link']['part'] : false;
 				$attr = isset($item['attr']) ? $item['attr'] : array();
 
