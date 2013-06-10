@@ -60,6 +60,31 @@ The li of the link gets a active class when the link is equal to Uri::string() o
 					),
 				)
 			),
+			
+			// Exemple with routing
+			// The route exemple is : 'item(:item)' => array('item/view', 'name' => 'route_item')
+			array(
+				'name' => 'Item 3 <b class="caret"></b>',
+				'link' => array(
+					'url'  => array('name' => 'route_item', 'named_params' => array('item' => 3)),
+					'attr' => array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'),
+					'part' => true
+				),
+				'attr' => array('class' => 'dropdown'),
+				'menu' => array(
+					'attr'  => array('class' => 'dropdown-menu'),
+					'items' => array(
+						array(
+							'name' => 'Sub Item 1',
+							'link' => 'item3/sub1'
+						),
+						array(
+							'name' => 'Sub Item 2',
+							'link' => 'item3/sub2'
+						),
+					),
+				)
+			),
 		),
 	);
 
